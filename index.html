@@ -237,7 +237,9 @@
       background:transparent;
       padding:0;
       cursor:zoom-in;
-      display:block;
+      display:flex;
+      justify-content:center;
+      width:100%;
     }
     .shot img{
       display:block;
@@ -321,17 +323,19 @@
       inset:0;
       z-index:100;
       display:none;
-      align-items:center;
-      justify-content:center;
-      padding:22px;
-      background:rgba(0,0,0,.92);
+      background:rgba(0,0,0,.84);
       cursor:zoom-out;
     }
-    .lightbox.open{display:flex}
+    .lightbox.open{display:block}
     .lightbox img{
-      max-width:94vw;max-height:92vh;
+      position:fixed;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      max-width:min(620px,82vw);
+      max-height:86vh;
       border-radius:18px;
-      box-shadow:0 30px 90px rgba(0,0,0,.7);
+      box-shadow:0 30px 90px rgba(0,0,0,.78);
     }
 
     .mobile-price-popover{
@@ -385,7 +389,7 @@
         height:auto;
         cursor:default;
       }
-      button.shot{cursor:default;}
+      button.shot{cursor:default;justify-content:center;width:100%;}
       .billing-pair{grid-template-columns:1fr;gap:15px}
       .billing-pair .shot img{
         width:min(100%,265px);
@@ -442,14 +446,10 @@
         text-transform:uppercase;
         letter-spacing:.05em;
       }
-      .mobile-price .chev{
-        font-size:15px;
-        line-height:1;
-        color:#fff;
-        transition:transform .18s ease;
-      }
-      .mobile-price[aria-expanded="true"] .chev{
-        transform:rotate(180deg);
+      .mobile-price .detail{
+        color:#d9dcdd;
+        font-size:9px;
+        letter-spacing:.08em;
       }
       .mobile-demo{
         min-height:54px;
@@ -643,7 +643,7 @@
     <button class="mobile-price" id="mobilePriceButton" aria-expanded="false" aria-controls="mobilePricePopover">
       <span class="tiny">Nasazení</span>
       <strong>3 900 Kč</strong>
-      <span class="sub"><span>1. rok v ceně</span><span class="chev">⌃</span></span>
+      <span class="sub"><span>1. rok v ceně</span><span class="detail">DETAIL</span></span>
     </button>
     <a class="mobile-demo" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">PODÍVEJ SE NA DEMO →</a>
   </div>
@@ -657,12 +657,28 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
 
+    function placeLightboxOverCard(btn){
+      const card = btn.closest('.feature');
+      const r = card.getBoundingClientRect();
+
+      let x = r.left + r.width / 2;
+      let y = r.top + r.height / 2;
+
+      // Keep the enlarged screenshot comfortably inside the viewport.
+      x = Math.max(170, Math.min(window.innerWidth - 170, x));
+      y = Math.max(190, Math.min(window.innerHeight - 190, y));
+
+      lightboxImg.style.left = `${x}px`;
+      lightboxImg.style.top = `${y}px`;
+    }
+
     document.querySelectorAll('.shot').forEach(btn=>{
       const src = btn.dataset.src;
 
       btn.addEventListener('click',()=>{
         if(!isFinePointer) return;
         lightboxImg.src = src;
+        placeLightboxOverCard(btn);
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden','false');
       });
