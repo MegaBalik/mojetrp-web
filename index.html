@@ -435,11 +435,9 @@
         line-height:1.05;
       }
       .mobile-price .sub{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:8px;
+        display:block;
         margin-top:3px;
+        padding-right:34px;
         color:#f17328;
         font-size:9px;
         font-weight:850;
@@ -447,25 +445,43 @@
         letter-spacing:.05em;
       }
       .mobile-price .detail{
-        color:#d9dcdd;
-        font-size:9px;
-        letter-spacing:.08em;
+        position:absolute;
+        right:12px;
+        top:50%;
+        transform:translateY(-50%);
+        color:#ffffff;
+        font-size:17px;
+        line-height:1;
+        letter-spacing:-.08em;
+        font-weight:900;
       }
       .mobile-demo{
         min-height:54px;
         display:flex;
         align-items:center;
         justify-content:center;
+        position:relative;
         border:1px solid #df7433;
         border-radius:13px;
         background:linear-gradient(135deg,#df6820,#ba4b12);
         color:#fff;
         text-decoration:none;
         font-weight:900;
-        font-size:13px;
-        padding:0 12px;
+        font-size:14px;
+        padding:0 38px 0 14px;
         text-align:center;
         box-shadow:0 8px 24px rgba(216,93,24,.18);
+        letter-spacing:.02em;
+      }
+      .mobile-demo .demo-chev{
+        position:absolute;
+        right:13px;
+        top:50%;
+        transform:translateY(-50%);
+        font-size:18px;
+        line-height:1;
+        letter-spacing:-.08em;
+        font-weight:900;
       }
       .mobile-price-popover{
         display:block;
@@ -626,7 +642,7 @@
   <a class="demo-pill" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">
     <div>
       <small>mojeTRP naživo</small>
-      <strong>Podívej se na demo</strong>
+      <strong>FUNKČNÍ DEMO</strong>
     </div>
     <div class="arrow">→</div>
   </a>
@@ -643,9 +659,11 @@
     <button class="mobile-price" id="mobilePriceButton" aria-expanded="false" aria-controls="mobilePricePopover">
       <span class="tiny">Nasazení</span>
       <strong>3 900 Kč</strong>
-      <span class="sub"><span>1. rok v ceně</span><span class="detail">DETAIL</span></span>
+      <span class="sub">1. rok v ceně</span><span class="detail">&gt;&gt;</span>
     </button>
-    <a class="mobile-demo" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">PODÍVEJ SE NA DEMO →</a>
+    <a class="mobile-demo" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">
+      <span>FUNKČNÍ DEMO</span><span class="demo-chev">&gt;&gt;</span>
+    </a>
   </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
