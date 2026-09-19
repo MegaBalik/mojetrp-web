@@ -15,7 +15,7 @@
       --muted:#9da3a6;
       --orange:#d85d18;
       --orange2:#f17328;
-      --white:#f5f3ef;
+      --white:#ece8e0;
       --ink:#111416;
       --shadow:0 20px 55px rgba(0,0,0,.30);
     }
@@ -75,36 +75,6 @@
       font-weight:760;
     }
 
-    .hero-side{
-      justify-self:end;
-      width:100%;
-      display:grid;
-      gap:12px;
-    }
-    .device-note{
-      justify-self:end;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.025);
-      border-radius:999px;
-      padding:9px 13px;
-      color:#e8e3dc;
-      white-space:nowrap;
-    }
-    .device-note .label{
-      color:#a8adaf;
-      font-size:11px;
-      letter-spacing:.09em;
-      text-transform:uppercase;
-      font-weight:750;
-    }
-    .device-note .sep{color:var(--orange2);font-weight:900}
-    .device-note svg{
-      width:19px;height:19px;fill:none;stroke:#f1ede6;stroke-width:1.8
-    }
-
     .hero-price{
       border:1px solid #343c41;
       border-radius:18px;
@@ -149,8 +119,8 @@
     .custom{
       margin:12px 0 30px;
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:34px;
+      grid-template-columns:1.05fr .85fr .48fr;
+      gap:28px;
       align-items:center;
       padding:30px 34px;
       border:1px solid var(--line);
@@ -176,14 +146,14 @@
     .custom h2{
       margin:7px 0 0;
       max-width:650px;
-      font-size:clamp(32px,3.3vw,48px);
+      font-size:clamp(32px,3.1vw,46px);
       line-height:1.02;
       letter-spacing:-.042em;
       font-weight:800;
     }
     .custom-side{
       border-left:1px solid rgba(255,255,255,.1);
-      padding-left:32px;
+      padding-left:28px;
     }
     .custom-side p{
       margin:7px 0;
@@ -191,7 +161,49 @@
       font-size:16px;
       line-height:1.45;
     }
-    .custom-side p:first-child{color:#fff;font-weight:750}
+    .custom-side .lead{
+      color:var(--orange2);
+      font-weight:800;
+    }
+    .custom-side .accent{
+      color:var(--orange2);
+      font-weight:800;
+    }
+
+    .custom-device{
+      border-left:1px solid rgba(255,255,255,.1);
+      padding-left:26px;
+      min-width:0;
+    }
+    .custom-device .device-title{
+      color:var(--orange2);
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:10px;
+      font-weight:850;
+      margin-bottom:12px;
+    }
+    .custom-device .device-line{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#f4f0e8;
+      font-size:15px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .custom-device .device-line b{
+      color:var(--orange2);
+      font-size:18px;
+    }
+    .custom-device svg{
+      width:24px;
+      height:24px;
+      fill:none;
+      stroke:#f2eee7;
+      stroke-width:1.8;
+      flex:0 0 auto;
+    }
 
     /* WHITE FEATURE CARDS */
     .features{
@@ -212,14 +224,12 @@
     .feature h3{
       margin:7px 0 19px;
       color:#111416;
-      font-size:clamp(21px,1.7vw,28px);
+      font-size:clamp(20px,1.55vw,26px);
       line-height:1.06;
-      letter-spacing:-.035em;
+      letter-spacing:-.034em;
       font-weight:790;
+      max-width:none;
     }
-    .feature:nth-child(1) h3{max-width:none}
-    .feature:nth-child(2) h3{max-width:none}
-    .feature:nth-child(3) h3{max-width:none}
 
     .shot-wrap{
       display:flex;
@@ -243,7 +253,7 @@
       object-fit:contain;
       border-radius:18px;
       box-shadow:none;
-      transition:transform .18s ease;
+      transition:transform .16s ease;
     }
     .shot:hover img{transform:translateY(-2px)}
 
@@ -270,7 +280,7 @@
       border-bottom:1px solid rgba(241,115,40,.45);
     }
 
-    /* FIXED DEMO ONLY */
+    /* FIXED DEMO */
     .demo-pill{
       position:fixed;
       right:20px;
@@ -300,31 +310,29 @@
     .demo-pill strong{display:block;font-size:17px}
     .demo-pill .arrow{font-size:27px;line-height:1}
 
-    /* HOVER PREVIEW */
+    /* HOVER PREVIEW: darken whole page, preview over hovered card */
     .hover-preview{
       position:fixed;
       inset:0;
       z-index:90;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(0,0,0,.62);
+      background:rgba(0,0,0,.78);
       opacity:0;
       visibility:hidden;
       pointer-events:none;
-      transition:opacity .14s ease,visibility .14s ease;
-      padding:22px;
+      transition:opacity .13s ease,visibility .13s ease;
     }
     .hover-preview.open{
       opacity:1;
       visibility:visible;
     }
     .hover-preview img{
+      position:fixed;
       display:block;
-      max-width:88vw;
-      max-height:86vh;
+      max-width:min(620px,76vw);
+      max-height:82vh;
       border-radius:18px;
-      box-shadow:0 30px 90px rgba(0,0,0,.64);
+      box-shadow:0 34px 100px rgba(0,0,0,.76);
+      transform:translate(-50%,-50%);
     }
 
     /* CLICK LIGHTBOX FOR MOBILE */
@@ -348,15 +356,31 @@
 
     .mobile-bar{display:none}
 
+    @media (max-width:1080px){
+      .custom{
+        grid-template-columns:1fr 1fr;
+      }
+      .custom-device{
+        grid-column:1/-1;
+        border-left:0;
+        border-top:1px solid rgba(255,255,255,.1);
+        padding:18px 0 0;
+      }
+    }
+
     @media (max-width:1020px){
       .hero-grid{grid-template-columns:1fr;gap:22px}
-      .hero-side{justify-self:stretch;grid-template-columns:auto 1fr;align-items:center}
-      .device-note{justify-self:start}
-      .hero-price{justify-self:end;max-width:330px}
+      .hero-price{justify-self:end;max-width:340px;width:100%}
       .custom{grid-template-columns:1fr;gap:18px}
-      .custom-side{border-left:0;border-top:1px solid rgba(255,255,255,.1);padding:18px 0 0}
+      .custom-side,
+      .custom-device{
+        border-left:0;
+        border-top:1px solid rgba(255,255,255,.1);
+        padding:18px 0 0;
+      }
+      .custom-device{grid-column:auto}
       .features{grid-template-columns:1fr}
-      .feature h3{font-size:28px}
+      .feature h3{font-size:26px}
       .shot-wrap{min-height:0}
       .shot img{height:auto;width:min(100%,300px)}
       .billing-pair{max-width:650px;margin:0 auto}
@@ -374,13 +398,11 @@
       .hero-logo{width:94px}
       .hero-copy h1{font-size:38px}
       .hero-copy p{font-size:20px}
-      .hero-side{grid-template-columns:1fr}
-      .device-note{justify-self:center}
       .hero-price{justify-self:stretch;max-width:none}
       .custom{padding:24px 21px}
       .custom h2{font-size:34px}
       .feature{padding:20px 18px 22px}
-      .feature h3{font-size:25px}
+      .feature h3{font-size:24px}
       .billing-pair{grid-template-columns:1fr;gap:15px}
       .demo-pill{display:none}
       .hover-preview{display:none}
@@ -426,30 +448,14 @@
           </div>
         </div>
 
-        <div class="hero-side">
-          <div class="device-note" aria-label="Na mobilu i počítači">
-            <span class="label">na</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="7" y="2.5" width="10" height="19" rx="2.2"></rect>
-              <line x1="10" y1="18.3" x2="14" y2="18.3"></line>
-            </svg>
-            <span class="sep">i</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="12" rx="1.8"></rect>
-              <line x1="8" y1="20" x2="16" y2="20"></line>
-              <line x1="12" y1="16" x2="12" y2="20"></line>
-            </svg>
+        <div class="hero-price">
+          <div class="eyebrow">Nasazení</div>
+          <div class="row">
+            <strong>3 900 Kč</strong>
+            <b>1. rok v ceně</b>
           </div>
-
-          <div class="hero-price">
-            <div class="eyebrow">Nasazení</div>
-            <div class="row">
-              <strong>3 900 Kč</strong>
-              <b>1. rok v ceně</b>
-            </div>
-            <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
-            <p class="renew">Potom 1 200 Kč / rok.</p>
-          </div>
+          <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
+          <p class="renew">Potom 1 200 Kč / rok.</p>
         </div>
       </div>
     </div>
@@ -458,13 +464,31 @@
   <main class="wrap">
     <section class="custom">
       <div>
-        <div class="kicker">Vaše instance</div>
+        <div class="kicker">Přesně podle vás</div>
         <h2>Vaše logo. Vaše barvy. Vaše TRP.</h2>
       </div>
+
       <div class="custom-side">
-        <p>Rychle nasadíme, nastavíme, rozjedeme.</p>
-        <p>Potřebujete něco jinak? Upravíme.</p>
-        <p>Potřebujete něco navíc? Doděláme.</p>
+        <p class="lead">Rychle nasadíme, nastavíme, rozjedeme.</p>
+        <p>Potřebujete něco jinak? <span class="accent">Upravíme.</span></p>
+        <p>Potřebujete něco navíc? <span class="accent">Doděláme.</span></p>
+      </div>
+
+      <div class="custom-device">
+        <div class="device-title">Pohodlně</div>
+        <div class="device-line" aria-label="Na mobilu i počítači">
+          <span>na</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="7" y="2.5" width="10" height="19" rx="2.2"></rect>
+            <line x1="10" y1="18.3" x2="14" y2="18.3"></line>
+          </svg>
+          <b>i</b>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="12" rx="1.8"></rect>
+            <line x1="8" y1="20" x2="16" y2="20"></line>
+            <line x1="12" y1="16" x2="12" y2="20"></line>
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -537,15 +561,36 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
 
+    function placePreviewOverCard(btn){
+      const card = btn.closest('.feature');
+      const r = card.getBoundingClientRect();
+
+      let x = r.left + r.width / 2;
+      let y = r.top + Math.min(r.height * 0.58, 420);
+
+      const margin = 150;
+      x = Math.max(margin, Math.min(window.innerWidth - margin, x));
+      y = Math.max(180, Math.min(window.innerHeight - 180, y));
+
+      hoverPreviewImg.style.left = `${x}px`;
+      hoverPreviewImg.style.top = `${y}px`;
+    }
+
     document.querySelectorAll('.shot').forEach(btn=>{
       const src = btn.dataset.src;
 
       if(isFinePointer){
         btn.addEventListener('mouseenter',()=>{
           hoverPreviewImg.src = src;
+          placePreviewOverCard(btn);
           hoverPreview.classList.add('open');
           hoverPreview.setAttribute('aria-hidden','false');
         });
+
+        btn.addEventListener('mousemove',()=>{
+          placePreviewOverCard(btn);
+        });
+
         btn.addEventListener('mouseleave',()=>{
           hoverPreview.classList.remove('open');
           hoverPreview.setAttribute('aria-hidden','true');
