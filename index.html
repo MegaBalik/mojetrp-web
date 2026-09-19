@@ -39,8 +39,8 @@
     .hero{padding:34px 0 26px}
     .hero-grid{
       display:grid;
-      grid-template-columns:minmax(0,1fr) 300px;
-      gap:44px;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:34px;
       align-items:center;
     }
     .hero-main{
@@ -75,7 +75,39 @@
       font-weight:760;
     }
 
+    .hero-side{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      justify-self:end;
+    }
+
+    .device-pill{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.025);
+      border-radius:999px;
+      padding:10px 13px;
+      color:#e8e3dc;
+      white-space:nowrap;
+      box-shadow:0 10px 28px rgba(0,0,0,.18);
+    }
+    .device-pill .label{
+      color:#a8adaf;
+      font-size:10px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:760;
+    }
+    .device-pill .sep{color:var(--orange2);font-weight:900}
+    .device-pill svg{
+      width:19px;height:19px;fill:none;stroke:#f1ede6;stroke-width:1.8;
+    }
+
     .hero-price{
+      width:300px;
       border:1px solid #343c41;
       border-radius:18px;
       background:linear-gradient(145deg,rgba(18,23,27,.96),rgba(10,13,15,.96));
@@ -119,8 +151,8 @@
     .custom{
       margin:12px 0 30px;
       display:grid;
-      grid-template-columns:1.05fr .85fr .48fr;
-      gap:28px;
+      grid-template-columns:1.08fr .92fr;
+      gap:34px;
       align-items:center;
       padding:30px 34px;
       border:1px solid var(--line);
@@ -153,7 +185,7 @@
     }
     .custom-side{
       border-left:1px solid rgba(255,255,255,.1);
-      padding-left:28px;
+      padding-left:30px;
     }
     .custom-side p{
       margin:7px 0;
@@ -170,42 +202,7 @@
       font-weight:800;
     }
 
-    .custom-device{
-      border-left:1px solid rgba(255,255,255,.1);
-      padding-left:26px;
-      min-width:0;
-    }
-    .custom-device .device-title{
-      color:var(--orange2);
-      text-transform:uppercase;
-      letter-spacing:.13em;
-      font-size:10px;
-      font-weight:850;
-      margin-bottom:12px;
-    }
-    .custom-device .device-line{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color:#f4f0e8;
-      font-size:15px;
-      font-weight:700;
-      white-space:nowrap;
-    }
-    .custom-device .device-line b{
-      color:var(--orange2);
-      font-size:18px;
-    }
-    .custom-device svg{
-      width:24px;
-      height:24px;
-      fill:none;
-      stroke:#f2eee7;
-      stroke-width:1.8;
-      flex:0 0 auto;
-    }
-
-    /* WHITE FEATURE CARDS */
+    /* FEATURE CARDS */
     .features{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -310,7 +307,7 @@
     .demo-pill strong{display:block;font-size:17px}
     .demo-pill .arrow{font-size:27px;line-height:1}
 
-    /* HOVER PREVIEW: darken whole page, preview over hovered card */
+    /* HOVER PREVIEW */
     .hover-preview{
       position:fixed;
       inset:0;
@@ -335,7 +332,6 @@
       transform:translate(-50%,-50%);
     }
 
-    /* CLICK LIGHTBOX FOR MOBILE */
     .lightbox{
       position:fixed;
       inset:0;
@@ -356,29 +352,21 @@
 
     .mobile-bar{display:none}
 
-    @media (max-width:1080px){
-      .custom{
-        grid-template-columns:1fr 1fr;
-      }
-      .custom-device{
-        grid-column:1/-1;
-        border-left:0;
-        border-top:1px solid rgba(255,255,255,.1);
-        padding:18px 0 0;
+    @media (max-width:1100px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-side{
+        justify-self:stretch;
+        justify-content:flex-end;
       }
     }
 
     @media (max-width:1020px){
-      .hero-grid{grid-template-columns:1fr;gap:22px}
-      .hero-price{justify-self:end;max-width:340px;width:100%}
       .custom{grid-template-columns:1fr;gap:18px}
-      .custom-side,
-      .custom-device{
+      .custom-side{
         border-left:0;
         border-top:1px solid rgba(255,255,255,.1);
         padding:18px 0 0;
       }
-      .custom-device{grid-column:auto}
       .features{grid-template-columns:1fr}
       .feature h3{font-size:26px}
       .shot-wrap{min-height:0}
@@ -398,7 +386,12 @@
       .hero-logo{width:94px}
       .hero-copy h1{font-size:38px}
       .hero-copy p{font-size:20px}
-      .hero-price{justify-self:stretch;max-width:none}
+      .hero-side{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .device-pill{align-self:center}
+      .hero-price{width:100%}
       .custom{padding:24px 21px}
       .custom h2{font-size:34px}
       .feature{padding:20px 18px 22px}
@@ -448,14 +441,30 @@
           </div>
         </div>
 
-        <div class="hero-price">
-          <div class="eyebrow">Nasazení</div>
-          <div class="row">
-            <strong>3 900 Kč</strong>
-            <b>1. rok v ceně</b>
+        <div class="hero-side">
+          <div class="device-pill" aria-label="Pohodlně na mobilu i počítači">
+            <span class="label">pohodlně na</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="7" y="2.5" width="10" height="19" rx="2.2"></rect>
+              <line x1="10" y1="18.3" x2="14" y2="18.3"></line>
+            </svg>
+            <span class="sep">i</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="12" rx="1.8"></rect>
+              <line x1="8" y1="20" x2="16" y2="20"></line>
+              <line x1="12" y1="16" x2="12" y2="20"></line>
+            </svg>
           </div>
-          <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
-          <p class="renew">Potom 1 200 Kč / rok.</p>
+
+          <div class="hero-price">
+            <div class="eyebrow">Nasazení</div>
+            <div class="row">
+              <strong>3 900 Kč</strong>
+              <b>1. rok v ceně</b>
+            </div>
+            <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
+            <p class="renew">Potom 1 200 Kč / rok.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -472,23 +481,6 @@
         <p class="lead">Rychle nasadíme, nastavíme, rozjedeme.</p>
         <p>Potřebujete něco jinak? <span class="accent">Upravíme.</span></p>
         <p>Potřebujete něco navíc? <span class="accent">Doděláme.</span></p>
-      </div>
-
-      <div class="custom-device">
-        <div class="device-title">Pohodlně</div>
-        <div class="device-line" aria-label="Na mobilu i počítači">
-          <span>na</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="7" y="2.5" width="10" height="19" rx="2.2"></rect>
-            <line x1="10" y1="18.3" x2="14" y2="18.3"></line>
-          </svg>
-          <b>i</b>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="12" rx="1.8"></rect>
-            <line x1="8" y1="20" x2="16" y2="20"></line>
-            <line x1="12" y1="16" x2="12" y2="20"></line>
-          </svg>
-        </div>
       </div>
     </section>
 
