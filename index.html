@@ -315,31 +315,7 @@
       font-weight:900;
     }
 
-    /* HOVER PREVIEW */
-    .hover-preview{
-      position:fixed;
-      inset:0;
-      z-index:90;
-      background:rgba(0,0,0,.78);
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-      transition:opacity .13s ease,visibility .13s ease;
-    }
-    .hover-preview.open{
-      opacity:1;
-      visibility:visible;
-    }
-    .hover-preview img{
-      position:fixed;
-      display:block;
-      max-width:min(620px,76vw);
-      max-height:82vh;
-      border-radius:18px;
-      box-shadow:0 34px 100px rgba(0,0,0,.76);
-      transform:translate(-50%,-50%);
-    }
-
+    /* CLICK LIGHTBOX ON DESKTOP */
     .lightbox{
       position:fixed;
       inset:0;
@@ -356,6 +332,10 @@
       max-width:94vw;max-height:92vh;
       border-radius:18px;
       box-shadow:0 30px 90px rgba(0,0,0,.7);
+    }
+
+    .mobile-price-popover{
+      display:none;
     }
 
     .mobile-bar{display:none}
@@ -394,42 +374,151 @@
       .hero-logo{width:94px}
       .hero-copy h1{font-size:38px}
       .hero-copy p{font-size:20px}
-      .hero-side{
-        flex-direction:column;
-        align-items:stretch;
-      }
-      .device-pill{align-self:center}
-      .hero-price{width:100%}
+      .hero-side{display:none}
       .custom{padding:24px 21px}
       .custom h2{font-size:34px}
       .feature{padding:20px 18px 22px}
       .feature h3{font-size:24px}
+      .shot-wrap{justify-content:center}
+      .shot img{
+        width:min(100%,265px);
+        height:auto;
+        cursor:default;
+      }
+      button.shot{cursor:default;}
       .billing-pair{grid-template-columns:1fr;gap:15px}
+      .billing-pair .shot img{
+        width:min(100%,265px);
+        height:auto;
+      }
       .demo-pill{display:none}
       .hover-preview{display:none}
       .mobile-bar{
         display:grid;
-        grid-template-columns:1fr;
+        grid-template-columns:.9fr 1.25fr;
+        gap:8px;
         position:fixed;
         left:0;right:0;bottom:0;
-        z-index:60;
+        z-index:70;
         padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-right));
-        background:rgba(5,7,8,.95);
+        background:rgba(0,0,0,.95);
         border-top:1px solid #31383e;
         backdrop-filter:blur(15px);
       }
+      .mobile-price{
+        min-height:54px;
+        border:1px solid #3a4247;
+        border-radius:13px;
+        background:#171c20;
+        color:#fff;
+        padding:7px 10px 6px;
+        text-align:left;
+        cursor:pointer;
+        position:relative;
+      }
+      .mobile-price .tiny{
+        display:block;
+        color:#9fa5a7;
+        font-size:8px;
+        text-transform:uppercase;
+        letter-spacing:.10em;
+        font-weight:800;
+        margin-bottom:1px;
+      }
+      .mobile-price strong{
+        display:block;
+        font-size:16px;
+        line-height:1.05;
+      }
+      .mobile-price .sub{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:8px;
+        margin-top:3px;
+        color:#f17328;
+        font-size:9px;
+        font-weight:850;
+        text-transform:uppercase;
+        letter-spacing:.05em;
+      }
+      .mobile-price .chev{
+        font-size:15px;
+        line-height:1;
+        color:#fff;
+        transition:transform .18s ease;
+      }
+      .mobile-price[aria-expanded="true"] .chev{
+        transform:rotate(180deg);
+      }
       .mobile-demo{
-        min-height:52px;
+        min-height:54px;
         display:flex;
         align-items:center;
         justify-content:center;
         border:1px solid #df7433;
         border-radius:13px;
-        background:linear-gradient(135deg,#da651f,#b94b12);
+        background:linear-gradient(135deg,#df6820,#ba4b12);
         color:#fff;
         text-decoration:none;
+        font-weight:900;
+        font-size:13px;
+        padding:0 12px;
+        text-align:center;
+        box-shadow:0 8px 24px rgba(216,93,24,.18);
+      }
+      .mobile-price-popover{
+        display:block;
+        position:fixed;
+        left:10px;
+        bottom:calc(76px + env(safe-area-inset-bottom));
+        z-index:69;
+        width:min(300px,calc(100vw - 20px));
+        border:1px solid #3a4247;
+        border-radius:17px;
+        background:#171c20;
+        color:#fff;
+        padding:16px 17px;
+        box-shadow:0 20px 60px rgba(0,0,0,.65);
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(8px);
+        transition:opacity .16s ease, transform .16s ease, visibility .16s ease;
+      }
+      .mobile-price-popover.open{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+      }
+      .mobile-price-popover .k{
+        color:#9fa5a7;
+        font-size:9px;
+        text-transform:uppercase;
+        letter-spacing:.13em;
         font-weight:850;
-        font-size:14px;
+      }
+      .mobile-price-popover h4{
+        margin:4px 0 3px;
+        font-size:25px;
+        letter-spacing:-.03em;
+      }
+      .mobile-price-popover .included{
+        color:#f17328;
+        font-size:10px;
+        text-transform:uppercase;
+        letter-spacing:.07em;
+        font-weight:850;
+      }
+      .mobile-price-popover p{
+        margin:8px 0 0;
+        color:#d2d3d0;
+        font-size:13px;
+        line-height:1.35;
+      }
+      .mobile-price-popover .renew{
+        color:#fff;
+        font-weight:800;
+        margin-top:10px;
       }
     }
   </style>
@@ -542,12 +631,21 @@
     <div class="arrow">→</div>
   </a>
 
-  <div class="mobile-bar">
-    <a class="mobile-demo" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">PODÍVEJ SE NA DEMO →</a>
+  <div class="mobile-price-popover" id="mobilePricePopover" aria-hidden="true">
+    <div class="k">Nasazení</div>
+    <h4>3 900 Kč</h4>
+    <div class="included">První rok provozu v ceně</div>
+    <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
+    <p class="renew">Potom 1 200 Kč / rok.</p>
   </div>
 
-  <div class="hover-preview" id="hoverPreview" aria-hidden="true">
-    <img id="hoverPreviewImg" src="" alt="">
+  <div class="mobile-bar">
+    <button class="mobile-price" id="mobilePriceButton" aria-expanded="false" aria-controls="mobilePricePopover">
+      <span class="tiny">Nasazení</span>
+      <strong>3 900 Kč</strong>
+      <span class="sub"><span>1. rok v ceně</span><span class="chev">⌃</span></span>
+    </button>
+    <a class="mobile-demo" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">PODÍVEJ SE NA DEMO →</a>
   </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -556,49 +654,14 @@
 
   <script>
     const isFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-    const hoverPreview = document.getElementById('hoverPreview');
-    const hoverPreviewImg = document.getElementById('hoverPreviewImg');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
-
-    function placePreviewOverCard(btn){
-      const card = btn.closest('.feature');
-      const r = card.getBoundingClientRect();
-
-      let x = r.left + r.width / 2;
-      let y = r.top + Math.min(r.height * 0.58, 420);
-
-      const margin = 150;
-      x = Math.max(margin, Math.min(window.innerWidth - margin, x));
-      y = Math.max(180, Math.min(window.innerHeight - 180, y));
-
-      hoverPreviewImg.style.left = `${x}px`;
-      hoverPreviewImg.style.top = `${y}px`;
-    }
 
     document.querySelectorAll('.shot').forEach(btn=>{
       const src = btn.dataset.src;
 
-      if(isFinePointer){
-        btn.addEventListener('mouseenter',()=>{
-          hoverPreviewImg.src = src;
-          placePreviewOverCard(btn);
-          hoverPreview.classList.add('open');
-          hoverPreview.setAttribute('aria-hidden','false');
-        });
-
-        btn.addEventListener('mousemove',()=>{
-          placePreviewOverCard(btn);
-        });
-
-        btn.addEventListener('mouseleave',()=>{
-          hoverPreview.classList.remove('open');
-          hoverPreview.setAttribute('aria-hidden','true');
-        });
-      }
-
       btn.addEventListener('click',()=>{
-        if(isFinePointer) return;
+        if(!isFinePointer) return;
         lightboxImg.src = src;
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden','false');
@@ -610,10 +673,29 @@
       lightbox.setAttribute('aria-hidden','true');
     });
 
+    const mobilePriceButton = document.getElementById('mobilePriceButton');
+    const mobilePricePopover = document.getElementById('mobilePricePopover');
+
+    function closeMobilePrice(){
+      mobilePricePopover.classList.remove('open');
+      mobilePricePopover.setAttribute('aria-hidden','true');
+      mobilePriceButton.setAttribute('aria-expanded','false');
+    }
+
+    mobilePriceButton.addEventListener('click',(e)=>{
+      e.stopPropagation();
+      const open = mobilePricePopover.classList.toggle('open');
+      mobilePricePopover.setAttribute('aria-hidden', open ? 'false' : 'true');
+      mobilePriceButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    mobilePricePopover.addEventListener('click',(e)=>e.stopPropagation());
+    document.addEventListener('click',closeMobilePrice);
+
     document.addEventListener('keydown',e=>{
       if(e.key==='Escape'){
-        hoverPreview.classList.remove('open');
         lightbox.classList.remove('open');
+        closeMobilePrice();
       }
     });
   </script>
