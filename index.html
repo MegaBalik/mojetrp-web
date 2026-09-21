@@ -57,19 +57,27 @@
       mix-blend-mode:screen;
     }
     .hero-copy h1{
-      margin:0 0 5px;
-      font-size:clamp(38px,4.6vw,62px);
-      line-height:.98;
-      letter-spacing:-.045em;
-      font-weight:820;
+      margin:0 0 7px;
+      font-size:clamp(28px,3.2vw,44px);
+      line-height:1;
+      letter-spacing:-.035em;
+      font-weight:800;
     }
-    .hero-copy p{
+    .hero-copy .hero-title{
       margin:0;
       color:var(--orange2);
-      font-size:clamp(22px,2.4vw,33px);
-      line-height:1.05;
-      letter-spacing:-.028em;
-      font-weight:760;
+      font-size:clamp(28px,3.35vw,46px);
+      line-height:1.02;
+      letter-spacing:-.032em;
+      font-weight:820;
+    }
+    .hero-copy .hero-tagline{
+      margin:9px 0 0;
+      color:#f3f0e9;
+      font-size:clamp(16px,1.45vw,21px);
+      line-height:1.2;
+      letter-spacing:-.01em;
+      font-weight:650;
     }
 
     .hero-side{
@@ -410,8 +418,9 @@
         gap:16px;
       }
       .hero-logo{width:94px}
-      .hero-copy h1{font-size:38px}
-      .hero-copy p{font-size:20px}
+      .hero-copy h1{font-size:30px}
+      .hero-copy .hero-title{font-size:24px}
+      .hero-copy .hero-tagline{font-size:15px;margin-top:7px}
       .hero-side{display:none}
       .custom{padding:24px 21px}
       .custom h2{font-size:34px}
@@ -583,8 +592,9 @@
             <img src="assets/trp-logo.png" alt="TRP">
           </div>
           <div class="hero-copy">
-            <h1>Vítá tě</h1>
-            <p>Tréninková rezervační platforma</p>
+            <h1>Vítá vás</h1>
+            <p class="hero-title">Tréninková rezervační platforma</p>
+            <p class="hero-tagline">Jednoduchý a levný systém pro vaše tréninky</p>
           </div>
         </div>
 
