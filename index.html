@@ -318,6 +318,8 @@
       border-bottom:1px solid rgba(241,115,40,.45);
     }
 
+    .mobile-contact{display:none;}
+
     /* FIXED DEMO */
     .demo-pill{
       position:fixed;
@@ -422,6 +424,35 @@
       .hero-copy .hero-title{font-size:24px}
       .hero-copy .hero-tagline{font-size:15px;margin-top:7px}
       .hero-side{display:none}
+      .mobile-contact{
+        display:block;
+        margin:0 auto 26px;
+        width:min(100%,420px);
+      }
+      .mobile-contact-title{
+        margin:0 0 10px;
+        color:var(--orange2);
+        text-align:center;
+        font-size:10px;
+        font-weight:850;
+        letter-spacing:.14em;
+        text-transform:uppercase;
+      }
+      .mobile-contact-links{
+        display:grid;
+        gap:8px;
+      }
+      .mobile-contact .contact-pill{
+        justify-content:flex-start;
+        width:100%;
+        min-height:48px;
+        padding:11px 15px;
+        border-radius:14px;
+        background:#15191c;
+      }
+      .mobile-contact .contact-pill span{
+        font-size:13px;
+      }
       .custom{padding:24px 21px}
       .custom h2{font-size:34px}
       .feature{padding:20px 18px 22px}
@@ -636,13 +667,34 @@
               <strong>3 900 Kč</strong>
               <b>1. rok v ceně</b>
             </div>
-            <p>Vaše barvy, grafika a logo. Funkce navíc? Určitě se domluvíme.</p>
+            <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
             <p class="renew">Potom 1 200 Kč / rok.</p>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <div class="wrap">
+    <section class="mobile-contact" aria-label="Kontakt">
+      <div class="mobile-contact-title">Volejte, pište</div>
+      <div class="mobile-contact-links">
+        <a class="contact-pill" href="tel:+420724101597">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.2 3.7l2.2 3.7-1.7 1.8c1.1 2.5 3.1 4.5 5.6 5.6l1.8-1.7 3.7 2.2-.7 4c-.1.6-.7 1-1.3 1C9.5 19.9 4.1 14.5 3.7 7.2c0-.6.4-1.2 1-1.3l2.5-.5z"></path>
+          </svg>
+          <span>+420 724 101 597</span>
+        </a>
+        <a class="contact-pill" href="mailto:radim@mojetrp.cz">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+          <span>radim@mojetrp.cz</span>
+        </a>
+      </div>
+    </section>
+  </div>
 
   <main class="wrap">
     <section class="custom">
@@ -698,10 +750,10 @@
     </section>
 
     <div class="contact">
-  Volejte, pište:
-  <a href="tel:+420724101597">+420 724 101 597</a>,
-  <a href="mailto:radim@mojetrp.cz">radim@mojetrp.cz</a>
-</div>
+      Volejte, pište:
+      <a href="tel:+420724101597">+420 724 101 597</a>,
+      <a href="mailto:radim@mojetrp.cz">radim@mojetrp.cz</a>
+    </div>
   </main>
 
   <a class="demo-pill" href="https://trp-demo.rb-now.cz/" target="_blank" rel="noopener">
@@ -716,7 +768,7 @@
     <div class="k">Nasazení</div>
     <h4>3 900 Kč</h4>
     <div class="included">První rok provozu v ceně</div>
-    <p>Vaše barvy, grafika a logo. Funkce navíc? Určitě se domluvíme.</p>
+    <p>Vaše barvy, grafika a logo. Funkce navíc po domluvě.</p>
     <p class="renew">Potom 1 200 Kč / rok.</p>
   </div>
 
